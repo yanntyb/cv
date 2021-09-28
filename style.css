@@ -7,7 +7,7 @@
 body{
     background-color: black;
     width: 100vw;
-    height: 120vh;
+    height: 1500px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -87,7 +87,7 @@ section:not(#first-section){
     padding-top: 15%;
 }
 
-section > *:not(h2) {
+section > *:not(h2, #contact) {
     padding-left: 3%;
     padding-right: 2%;
     padding-top: 2%;
@@ -142,3 +142,86 @@ th{
     color: lightcoral;
 }
 
+input {
+    padding: 5px;
+    font-size: 16px;
+    border-width: 1px;
+    border-color: #CCCCCC;
+    background-color: #FFFFFF;
+    color: #000000;
+    border-style: solid;
+    border-radius: 0px;
+    box-shadow: -1px 0px 6px rgba(66,66,66,.31);
+    text-shadow: -50px 0px 0px rgba(66,66,66,.0);
+}
+input:focus {
+    outline:none;
+}
+
+form{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    width: 100%;
+}
+
+form > *{
+    width: 100%;
+    margin: 1%;
+    padding: 2%;
+}
+
+figcaption{
+    display: none;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dl,
+dd {
+    font-size: .9rem;
+}
+
+dd {
+    margin-bottom: 1em;
+    font-style: italic;
+}
+
+dt, dd {
+    width: 50%;
+}
+
+dl{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 700px){
+    body{
+        width: 100vw;
+    }
+    #main{
+        width: 100vw;
+    }
+    #left{
+        width: 35%;
+    }
+    #right{
+        width: 65%;
+    }
+    img{
+        width: 50px;
+        height: 50px;
+    }
+    #title{
+        font-size: 80%;
+    }
+}

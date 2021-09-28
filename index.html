@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>CV</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" media="screen" href="style.css">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <body>
     <div id="main">
@@ -50,7 +52,10 @@
         <div id="right">
             <main>
                 <div id="title">
-                    <img src="https://www.handiclubnimois.fr/wp-content/uploads/2020/10/blank-profile-picture-973460_1280.png" alt="profile picture">
+                    <figure>
+                        <img src="https://www.handiclubnimois.fr/wp-content/uploads/2020/10/blank-profile-picture-973460_1280.png" alt="profile picture">
+                        <figcaption>Profile</figcaption>
+                    </figure>
                     <h1>Yann Tyburczy</h1>
                 </div>
                 <h2>Développeur Web</h2>
@@ -99,13 +104,41 @@
             </section>
             <section id="comp">
                 <h2>Compétences</h2>
-                <ul>
-                    <li>Créativité</li>
-                    <li>Travail en équipe</li>
-                    <li>Gestion de crise</li>
-                    <li>Empathie</li>
-                    <li>Faire le café</li>
-                </ul>
+                <dl>
+                    <dt>Créativité</dt>
+                    <dd>Lorem ipsum dolor s</dd>
+                    <dt>Travail en équipe</dt>
+                    <dd>Lor</dd>
+                    <dt>Gestion de crise</dt>
+                    <dd>Lorem ipsum dolor sit amet, cons</dd>
+                    <dt>Empathie</dt>
+                    <dd>Lorem ipsum dolor s</dd>
+                    <dt>Faire le café</dt>
+                    <dd>Lorem ipsum dol</dd>
+                </dl>
+            </section>
+            <section id="contact">
+                <div>
+                    <form action="#" method="post" autocomplete="on">
+                        <fieldset>
+                            <legend><h2>Contact</h2></legend>
+                            <label for="nom">
+                                Nom:
+                                <input type="text" name="nom" placeholder="nom">
+                            </label>
+                            <label for="mail">
+                                Mail:
+                                <input type="text" name="mail" placeholder="mail">
+                            </label>
+                            <label for="content">
+                                Contenue:
+                                <textarea name="content" cols="30" rows="10"></textarea>
+                            </label>
+                        </fieldset>
+
+                        <input type="submit">
+                    </form>
+                </div>
             </section>
         </div>
     </div>
