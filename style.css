@@ -7,7 +7,7 @@
 body{
     background-color: black;
     width: 100vw;
-    height: 100vh;
+    height: 120vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -67,6 +67,8 @@ main h2{
     color: white;
     text-align: right;
     padding: 2% 2% 2% 15%;
+    box-shadow: -3px 4px 8px 4px rgba(0,0,0,0.3);
+    box-shadow: -3px 4px 8px 4px rgba(0,0,0,0.3), 3px 3px 0px 0px rgba(0,0,0,0.3);
 }
 
 h2{
@@ -128,5 +130,15 @@ th{
 
 #experience tr td:not(:last-child){
     border-right: 1px solid black;
+}
+
+
+#comp li {
+    display: inline-block;
+}
+
+#comp li:before{
+    content: "▣";
+    color: lightcoral;
 }
 
