@@ -5,7 +5,7 @@
 }
 
 body{
-    background-color: black;
+    background-color: whitesmoke;
     width: 100vw;
     height: 1500px;
     display: flex;
@@ -21,15 +21,16 @@ body{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
 }
 
 #left{
     float: left;
     width: 20%;
-    height: 100%;
+    height: 90%;
     background-color: darkseagreen;
     padding-top: 13%;
+    box-shadow: 1px 3px 8px 2px rgba(0,0,0,0.5);
+
 }
 
 #left > *{
@@ -39,9 +40,10 @@ body{
 #right{
     float: right;
     width: 40%;
-    height: 100%;
+    height: 90%;
     background-color: cornsilk;
     padding-left: 3%;
+    box-shadow: 1px 3px 8px 2px rgba(0,0,0,0.5);
 }
 
 main{
@@ -60,15 +62,16 @@ main h2{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-left: 2%;
 }
 
 #title h1{
-    background-color: darksalmon;
+    background-color: darkred;
     color: white;
     text-align: right;
-    padding: 2% 2% 2% 15%;
-    box-shadow: -3px 4px 8px 4px rgba(0,0,0,0.3);
+    padding: 2% 1% 2% 15%;
     box-shadow: -3px 4px 8px 4px rgba(0,0,0,0.3), 3px 3px 0px 0px rgba(0,0,0,0.3);
+    letter-spacing: 4px;
 }
 
 h2{
@@ -81,6 +84,7 @@ img{
     border-radius: 50%;
     display: block;
     margin-left: 5%;
+    box-shadow: 1px 3px 8px 2px rgba(0,0,0,0.5);
 }
 
 section:not(#first-section){
@@ -103,7 +107,7 @@ aside{
 
 i{
     padding-right: 3%;
-    color: darksalmon;
+    color: darkred;
 }
 
 ul{
@@ -111,7 +115,7 @@ ul{
 }
 
 #left h2 {
-    color: darksalmon;
+    color: darkred;
 }
 
 a{
@@ -170,7 +174,6 @@ form{
 
 form > *{
     width: 100%;
-    margin: 1%;
     padding: 2%;
 }
 
@@ -199,12 +202,12 @@ dt, dd {
 dl{
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: right;
     align-items: center;
     flex-wrap: wrap;
 }
 
-@media screen and (max-width: 700px){
+@media screen and (max-width: 1000px){
     body{
         width: 100vw;
     }
@@ -213,9 +216,11 @@ dl{
     }
     #left{
         width: 35%;
+        height: 100%;
     }
     #right{
         width: 65%;
+        height: 100%;
     }
     img{
         width: 50px;
@@ -224,4 +229,13 @@ dl{
     #title{
         font-size: 80%;
     }
+}
+
+fieldset > *:not(legend) {
+    width: 100%;
+}
+
+textarea{
+    align-self: center;
+    width: 100%;
 }
