@@ -1,0 +1,29 @@
+{
+  "comp" :  [
+    [
+      "Créativité",
+      "Lorem ipsum dolor s"
+    ],
+    [
+      "Travail en équipe",
+      "Lor"
+    ],
+    [
+      "Gestion de crise",
+      "Lorem ipsum dolor sit amet"
+    ],
+    [
+      "Empathie",
+      "Lorem ipsum dolor"
+    ],
+    [
+      "Faire le café",
+      "Lorem"
+    ]
+  ],
+  "coord": [
+    "<i class='as fa-map-marker-alt'></i> Fourmies, France",
+    "<i class='fas fa-phone-alt'></i>0600000000",
+    "<a href='mailto:yann@yann.fr'><i class='far fa-envelope'></i>yann@yann.fr</a>"
+  ]
+}

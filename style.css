@@ -172,7 +172,6 @@ form{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    height: 10vh;
     width: 100%;
 }
 
@@ -206,7 +205,7 @@ dt, dd {
 dl{
     display: flex;
     flex-direction: row;
-    justify-content: right;
+    justify-content: left;
     align-items: center;
     flex-wrap: wrap;
 }

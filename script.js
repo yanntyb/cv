@@ -5,6 +5,8 @@ let label = document.querySelectorAll("label");
 let fig = document.querySelector("#fig");
 fig.dataset.run = "false";
 fig.dataset.action = "false";
+let comp_elem = document.querySelector("#comp dl")
+let coord_elem = document.querySelector("#coord ul")
 
 for(let elem of h1){
     const fullName = elem.innerHTML;
@@ -134,3 +136,21 @@ fig.addEventListener("mouseover", () => {
 
 
 })
+
+fetch("comp.json")
+.then(resp => resp.json())
+.then(json => {
+    for(let comp of json["comp"]){
+        let dt = document.createElement("dt");
+        dt.innerHTML = comp[0];
+        let dd = document.createElement("dd");
+        dd.innerHTML = comp[1];
+        comp_elem.appendChild(dt);
+        comp_elem.appendChild(dd);
+    }
+    for(let coord of json["coord"]){
+        let li = document.createElement("li");
+        li.innerHTML = coord;
+        coord_elem.appendChild(li);
+    }
+});
