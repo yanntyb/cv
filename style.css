@@ -78,7 +78,11 @@ h2{
     color: cornflowerblue;
 }
 
-img{
+h2:hover{
+    cursor: pointer;
+}
+
+img:not(.fig-img){
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -177,7 +181,7 @@ form > *{
     padding: 2%;
 }
 
-figcaption{
+figcaption:not(.fig-caption){
     display: none;
 }
 
@@ -238,4 +242,36 @@ fieldset > *:not(legend) {
 textarea{
     align-self: center;
     width: 100%;
+}
+
+.fig-img{
+    width:524px !important;
+}
+
+#fig {
+    border: thin #c0c0c0 solid;
+    display: flex;
+    flex-flow: column;
+    padding: 5px;
+    margin-top: 5%;
+    transform-style: preserve-3d;
+}
+
+.fig-caption {
+    background-color: #222;
+    color: #fff;
+    font: italic smaller sans-serif;
+    padding: 3px;
+    text-align: center;
+    width: 100%;
+}
+
+#fig > * > * {
+    width: 100%;
+}
+
+#back{
+    position: absolute;
+    z-index: -1;
+    transform: rotateY(-180deg);
 }

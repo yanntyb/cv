@@ -1,7 +1,10 @@
 let h1 = document.querySelectorAll("h1");
-
 let h2 = document.querySelectorAll("h2");
 let section = document.querySelectorAll("section");
+let label = document.querySelectorAll("label");
+let fig = document.querySelector("#fig");
+fig.dataset.run = "false";
+fig.dataset.action = "false";
 
 for(let elem of h1){
     const fullName = elem.innerHTML;
@@ -39,14 +42,13 @@ let anim_h2 = () => {
     }
 }
 
-let index = 0;
 for(let elem of section){
     let arrow = document.createElement("h3");
     arrow.innerHTML = "<i class='fas fa-arrow-right'></i>";
     elem.appendChild(arrow);
     let elemTitle = elem.getElementsByTagName("h2")[0];
     if(elemTitle){
-        const content = elem.parentNode.querySelectorAll("section > *:not(h2, h3)")[index];
+        const content = elem.parentNode.querySelectorAll("section > *:not(h2, h3)")[0];
         elem.innerHTML = "";
         elem.appendChild(elemTitle);
         elem.dataset.show = "false";
@@ -54,7 +56,6 @@ for(let elem of section){
             if(elem.dataset.show === "false"){
                 elem.appendChild(content);
                 elem.dataset.show = "true";
-
             }
             else{
                 elem.innerHTML = "";
@@ -66,3 +67,70 @@ for(let elem of section){
 
 
 }
+
+for(let elem of label){
+    const letterList = elem.innerHTML.split("");
+    elem.innerHTML = "";
+    let x = Math.random();
+    for(let letter of letterList){
+        let span = document.createElement("span");
+        span.innerHTML = letter;
+        elem.appendChild(span);
+        let interval = (pos) => window.setTimeout(() => {
+            span.style.color = "rgb(" + (Math.abs(Math.cos(pos) * 255)).toString() + "," +   + (Math.abs(Math.sin(pos) * 255)).toString() + "," +  + (Math.abs(Math.cos(pos) * 100)).toString() + ")";
+            pos += 0.1;
+            interval(pos);
+        },20);
+        interval(x);
+        x+=0.1;
+    }
+}
+
+fig.addEventListener("mouseover", () => {
+    let front = fig.querySelector("#front");
+    if(fig.dataset.run === "false"){
+        if(fig.dataset.action === "false"){
+            fig.dataset.action = "true";
+            fig.dataset.run = "true";
+            let interval = (deg) => {
+                window.setTimeout(() => {
+                    fig.style.transform = "rotateY(" + deg + "deg)";
+                    deg ++;
+                    if(deg < 90){
+                        front.style.zIndex = "-1";
+                    }
+                    if(deg < 180){
+                        interval(deg);
+                    }
+                    else{
+                        fig.dataset.run = "false";
+                    }
+                },10)
+            }
+            interval(0);
+
+        }
+        else{
+            fig.dataset.action = "false";
+            fig.dataset.run = "true";
+            let interval = (deg) => {
+                window.setTimeout(() => {
+                    fig.style.transform = "rotateY(" + deg + "deg)";
+                    deg --;
+                    if(deg < 90) {
+                        front.style.zIndex = "1";
+                    }
+                    if(deg > 0){
+                        interval(deg);
+                    }
+                    else{
+                        fig.dataset.run = "false";
+                    }
+                },10)
+            }
+            interval(180);
+        }
+    }
+
+
+})
