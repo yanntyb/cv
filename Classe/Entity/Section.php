@@ -2,7 +2,7 @@
 
 use App\Traits\GlobalEntityTrait;
 
-class Article
+class Section
 {
     use GlobalEntityTrait;
 
@@ -21,7 +21,7 @@ class Article
      * @param int $side
      * @return $this
      */
-    public function setSide(int $side): Article
+    public function setSide(int $side): Section
     {
         $this->side = $side;
         return $this;
@@ -39,7 +39,7 @@ class Article
      * @param string $title
      * @return $this
      */
-    public function setTitle(string $title): Article
+    public function setTitle(string $title): Section
     {
         $this->title = $title;
         return $this;

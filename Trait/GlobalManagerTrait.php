@@ -14,7 +14,7 @@ trait GlobalManagerTrait
     private array $fk;
 
     /**
-     * ArticleManager constructor.
+     * SectionManager constructor.
      */
     public function __construct(){
         $this->db = DB::getInstance();

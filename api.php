@@ -1,27 +1,28 @@
 <?php
 
-use App\Manager\ArticleManager;
+use App\Manager\BaliseManager;
+use App\Manager\SectionManager;
+use App\Manager\ChildManager;
 
 require_once $_SERVER["DOCUMENT_ROOT"] . "/Classe/DB.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/Trait/GlobalManagerTrait.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/Trait/GlobalEntityTrait.php";
 
-require_once $_SERVER["DOCUMENT_ROOT"] . "/Classe/Entity/Article.php";
-require_once $_SERVER["DOCUMENT_ROOT"] . "/Classe/Manager/ArticleManager.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/Classe/Entity/Balise.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/Classe/Manager/BaliseManager.php";
 
-$articleManager = new ArticleManager();
-$articles = $articleManager->getAllEntity();
+require_once $_SERVER["DOCUMENT_ROOT"] . "/Classe/Entity/Section.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/Classe/Manager/SectionManager.php";
 
-$return = [];
+require_once $_SERVER["DOCUMENT_ROOT"] . "/Classe/Entity/Child.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/Classe/Manager/ChildManager.php";
 
-foreach($articles as $article){
-    $return[] = [
-        "title" => $article->getTitle(),
-        "side" => $article->getSide()
-    ];
-}
+$childManager = new ChildManager();
+$childes = $childManager->getAllEntity();
 
-echo json_encode($return);
+echo "<pre>";
+print_r($childes);
+echo "</pre>";
 
 
 

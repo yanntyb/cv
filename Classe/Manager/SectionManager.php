@@ -4,7 +4,7 @@ namespace App\Manager;
 
 use App\Traits\GlobalManagerTrait;
 
-class ArticleManager
+class SectionManager
 {
     use GlobalManagerTrait;
 
