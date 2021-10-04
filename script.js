@@ -1,40 +1,36 @@
-let h1 = document.querySelectorAll("h1");
-let h2 = document.querySelectorAll("h2");
-let section = document.querySelectorAll("section");
-let label = document.querySelectorAll("label");
-let fig = document.querySelector("#fig");
-fig.dataset.run = "false";
-fig.dataset.action = "false";
-let comp_elem = document.querySelector("#comp dl")
-let coord_elem = document.querySelector("#coord ul")
+const h1 = $("h1");
+const h2 = $("h2");
+const section = $("section");
+const label = $("label");
+const fig = $("#fig");
+fig.data("run","false");
+fig.data("action","false");
+const comp_elem = $("#comp dl")
+const coord_elem = $("#coord ul")
 
-for(let elem of h1){
-    const fullName = elem.innerHTML;
-    elem.innerHTML = elem.innerHTML[0];
-    let index = 1;
-    let interval = () => window.setTimeout(() => {
-        elem.innerHTML += fullName[index];
-        index++;
-        if(index >= fullName.length){
-            anim_h2();
-            return true;
-        }
-        interval();
-    },100)
-    interval();
-}
+const h1_content = h1.html();
+h1.html("");
+let interval = window.setInterval(()=>{
+    if(h1.html().length < h1_content.length){
+        h1.html(h1.html() + h1_content[h1.html().length]);
+    }
+    else{
+        anim_h2();
+        clearInterval(interval);
+
+    }
+},100)
 
 let anim_h2 = () => {
     for(let elem of h2){
-        const letterList = elem.innerHTML.split("");
-        elem.innerHTML = "";
+        const letterList = $(elem).html().split("");
+        $(elem).html("");
         let x = Math.random();
         for(let letter of letterList){
-            let span = document.createElement("span");
-            span.innerHTML = letter;
-            elem.appendChild(span);
+            let span = $(`<span>${letter}</span>`);
+            $(elem).append(span);
             let interval = (pos) => window.setTimeout(() => {
-                span.style.opacity = (Math.abs(Math.cos(pos) * 100)).toString() + "%";
+                span.css("opacity", Math.abs(Math.cos(pos) * 100).toString() + "%");
                 pos += 0.009;
                 interval(pos);
             },20);
@@ -45,29 +41,17 @@ let anim_h2 = () => {
 }
 
 for(let elem of section){
-    let arrow = document.createElement("h3");
-    arrow.innerHTML = "<i class='fas fa-arrow-right'></i>";
-    elem.appendChild(arrow);
-    let elemTitle = elem.getElementsByTagName("h2")[0];
-    if(elemTitle){
-        const content = elem.parentNode.querySelectorAll("section > *:not(h2, h3)")[0];
-        elem.innerHTML = "";
-        elem.appendChild(elemTitle);
-        elem.dataset.show = "false";
-        elem.addEventListener("click", () => {
-            if(elem.dataset.show === "false"){
-                elem.appendChild(content);
-                elem.dataset.show = "true";
-            }
-            else{
-                elem.innerHTML = "";
-                elem.appendChild(elemTitle);
-                elem.dataset.show = "false";
-            }
-        })
-    }
-
-
+    elem = $(elem);
+    let elemTitle = elem.find("h2")[0];
+    const content = elem.parent().find("section > *:not(h2, h3)")[0];
+    elem.html("").append(elemTitle).data("show","false").click(() => {
+        if(elem.data("show") === "false"){
+            elem.append(content).data("show","true");
+        }
+        else{
+            elem.html("").append(elemTitle).data("show","false");
+        }
+    })
 }
 
 for(let elem of label){
@@ -88,7 +72,7 @@ for(let elem of label){
     }
 }
 
-fig.addEventListener("mouseover", () => {
+fig.mouseover(() => {
     let front = fig.querySelector("#front");
     if(fig.dataset.run === "false"){
         if(fig.dataset.action === "false"){
@@ -141,16 +125,16 @@ fetch("comp.json")
 .then(resp => resp.json())
 .then(json => {
     for(let comp of json["comp"]){
-        let dt = document.createElement("dt");
+        let dt = $("dt");
         dt.innerHTML = comp[0];
         let dd = document.createElement("dd");
         dd.innerHTML = comp[1];
-        comp_elem.appendChild(dt);
-        comp_elem.appendChild(dd);
+        comp_elem.append(dt);
+        comp_elem.append(dd);
     }
     for(let coord of json["coord"]){
         let li = document.createElement("li");
         li.innerHTML = coord;
-        coord_elem.appendChild(li);
+        coord_elem.append(li);
     }
 });
