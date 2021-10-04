@@ -55,15 +55,16 @@ for(let elem of section){
 }
 
 for(let elem of label){
-    const letterList = elem.innerHTML.split("");
-    elem.innerHTML = "";
+    elem = $(elem);
+    const letterList = elem.html().split("");
+    elem.html("");
     let x = Math.random();
     for(let letter of letterList){
-        let span = document.createElement("span");
-        span.innerHTML = letter;
-        elem.appendChild(span);
+        let span = $("<span></span>");
+        span.html(letter);
+        elem.append(span);
         let interval = (pos) => window.setTimeout(() => {
-            span.style.color = "rgb(" + (Math.abs(Math.cos(pos) * 255)).toString() + "," +   + (Math.abs(Math.sin(pos) * 255)).toString() + "," +  + (Math.abs(Math.cos(pos) * 100)).toString() + ")";
+            span.css("color","rgb(" + (Math.abs(Math.cos(pos) * 255)).toString() + "," +   + (Math.abs(Math.sin(pos) * 255)).toString() + "," +  + (Math.abs(Math.cos(pos) * 100)).toString() + ")");
             pos += 0.1;
             interval(pos);
         },20);
