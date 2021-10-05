@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits;
+namespace Controller\Traits;
 
 use App\Classes\DB;
 use PDO;
@@ -14,7 +14,7 @@ trait GlobalManagerTrait
     private array $fk;
 
     /**
-     * SectionManager constructor.
+     * ArticleManager constructor.
      */
     public function __construct(){
         $this->db = DB::getInstance();
@@ -129,7 +129,6 @@ trait GlobalManagerTrait
                 $manager = new $managerName;
                 return $manager->getSingleEntity($id);
             }
-
         }
     }
 }

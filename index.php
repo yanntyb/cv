@@ -1,3 +1,16 @@
+<?php
+
+session_start();
+
+if(isset($_SESSION["connect"])){
+    $connected = true;
+}
+else{
+    $connected = false;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,42 +23,20 @@
 <body>
     <div id="main">
         <div id="left">
-            <section id="coord">
-                <h2>Coordonnées</h2>
-                <ul>
-                </ul>
-            </section>
+            <section id="coord"></section>
             <section>
                 <h2>Formation</h2>
                 <table>
-                    <tbody>
+                    <thead>
                     <tr>
-                        <td>2019</td>
-                        <td>Baccalauréat Scientifique</td>
+                        <th>Année</th>
+                        <th>Intitulé</th>
                     </tr>
-                    <tr>
-                        <td>2021</td>
-                        <td>Développeur Web/Web Mobile</td>
-                    </tr>
-                    </tbody>
+                    </thead>
                 </table>
             </section>
-            <section>
-                <h2>Langues</h2>
-                <ul>
-                    <li>Français</li>
-                    <li>Anglais</li>
-                    <li>Espagnol</li>
-                </ul>
-            </section>
-            <section>
-                <h2>Réseaux sociaux</h2>
-                <ul>
-                    <li><a href="#"><i class="fab fa-facebook-square"></i>Facebook</a></li>
-                    <li><a href="#"><i class="fab fa-github-square"></i>Github</a></li>
-                    <li></li>
-                </ul>
-            </section>
+            <section></section>
+            <section></section>
         </div>
         <div id="right">
             <main>
@@ -58,52 +49,22 @@
                 </div>
                 <h2>Développeur Web</h2>
             </main>
-            <section id="first-section">
-                <h2>Profile</h2>
-                <article>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        A, ad animi architecto blanditiis cum debitis deleniti dolore eveniet expedita libero natus nobis,
-                        optio quo soluta tempora veritatis, voluptatem.
-                    <p>
-                    <aside>
-                        <p>Accusamus, vel!</p>
-                    </aside>
-                </article>
-            </section>
+            <section id="first-section"></section>
             <section id="experience">
                 <h2>Experience Professionnelle</h2>
                 <table>
                     <thead>
-                    <tr>
-                        <th>Période</th>
-                        <th>Entreprise</th>
-                        <th>Poste</th>
-                    </tr>
+                        <tr>
+                            <th>Periode</th>
+                            <th>Entreprise</th>
+                            <th>Poste</th>
+                        </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>12 novembre<br> -> 15 octobre</td>
-                            <td>Truc</td>
-                            <td>Développeur Web</td>
-                        </tr>
-                        <tr>
-                            <td>2 janvier<br> -> 24 juin</td>
-                            <td>Machin</td>
-                            <td>Infirmier</td>
-                        </tr>
-                        <tr>
-                            <td>27 juillet<br> -> 14 septembre</td>
-                            <td>Bidule</td>
-                            <td>Garagiste</td>
-                        </tr>
-                    </tbody>
                 </table>
             </section>
             <section id="comp">
-                <h2>Compétences</h2>
             </section>
-            <section id="contact">
+            <section class="notthissection" id="contact">
                 <div>
                     <form action="#" method="post" autocomplete="on">
                         <fieldset>
@@ -131,7 +92,7 @@
                     </form>
                 </div>
             </section>
-            <section>
+            <section class="notthissection">
                 <h2>Techno</h2>
                 <figure id="fig">
                     <div id="front">
@@ -146,7 +107,12 @@
             </section>
         </div>
     </div>
+    <script src="script.js"></script>
+    <?php if($connected){
+        echo "<div id='submit'>Submit</div>";
+        echo "<script src='ajout.js'></script>";
+    } ?>
 </body>
-<script src="script.js"></script>
+
 <script src="https://kit.fontawesome.com/78e483bd6f.js" crossorigin="anonymous"></script>
 </html>

@@ -1,6 +1,5 @@
 <?php
 
-
 require_once $_SERVER["DOCUMENT_ROOT"] . "/Classe/DB.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/Trait/GlobalEntityTrait.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/Trait/GlobalManagerTrait.php";
@@ -12,39 +11,17 @@ require_once $_SERVER["DOCUMENT_ROOT"] . "/Classe/Entity/Content.php";
 require_once $_SERVER["DOCUMENT_ROOT"] . "/Classe/Manager/ContentManager.php";
 
 
-$childManager = new ContentManager();
-$childes = $childManager->getAllEntity();
+$datas = json_decode(file_get_contents("php://input"), true);
+$manager = new ContentManager();
 
-$return = [];
-foreach($childes as $child){
-    $return[] = [
-        "title" => $child->getSection()->getTitle(),
-        "balise" => $child->getBalise(),
-        "content" => $child->getContenue(),
-        "section_id" => $child->getSection()->getId(),
-        "side" => $child->getSection()->getSide(),
-        "content_id" => $child->getId()
-    ];
+foreach($datas as $data){
+    if(isset($data["content"]) && $data["content"] !== []){
+        if(is_array($data["content"])){
+            $content = "\n" .  implode("|", $data["content"]);
+        }
+        else{
+            $content = " " . $data["content"];
+        }
+        $manager->updateContent($data["id"],$content);
+    }
 }
-
-
-echo json_encode($return);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-;

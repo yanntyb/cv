@@ -1,8 +1,6 @@
 <?php
 
-namespace App\Manager;
-
-use App\Traits\GlobalManagerTrait;
+use Controller\Traits\GlobalManagerTrait;
 
 class SectionManager
 {
